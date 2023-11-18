@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Garet-Book";
+  src: local("Garet-Book"), url("./Garet-Book.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Garet-Heavy";
+  src: local("Garet-Heavy"), url("./Garet-Heavy.ttf") format("truetype");
+}
