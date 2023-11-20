@@ -33,6 +33,7 @@ const Form = () => {
 
   const scriptUrl = process.env.GATSBY_SHEETS_URL;
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,10 +44,14 @@ const Form = () => {
       body: new FormData(formRef.current),
     })
       .then((res) => {
-        console.log("SUCCESSFULLY SUBMITTED");
         setLoading(false);
+        setSubmitted(true);
+        formRef.current.reset();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   };
 
   return (
@@ -59,7 +64,17 @@ const Form = () => {
       >
         <Input type="text" name="name" placeholder="Name" />
         <Input type="email" placeholder="Email" name={"email"} />
-        <SubmitButton type="submit">Stay Up To Date</SubmitButton>
+        <SubmitButton
+          id="email-submit"
+          type="submit"
+          disabled={loading || submitted}
+        >
+          {loading
+            ? "Submitting..."
+            : submitted
+            ? "Thank you!"
+            : "Stay Up To Date"}
+        </SubmitButton>
       </StyledForm>
     </>
   );

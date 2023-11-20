@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import "../assets/fonts/fonts.css";
 import Form from "../components/Form";
+import dogsSketch from "../assets/images/dogs-sketch.png";
 
 const LandingPageContainer = styled.div`
   display: flex;
@@ -32,10 +33,16 @@ const ComingSoonMessage = styled.p`
   margin-top: 48px;
 `;
 
+const StyledImage = styled.img`
+  width: 15%;
+`;
+
 const LandingPage = () => {
   return (
     <LandingPageContainer>
       <Heading>RIDENOUR-FORST</Heading>
+
+      <StyledImage src={dogsSketch} alt="Dog Sketch" />
 
       <Subtitle>June 28-30, 2024</Subtitle>
       <Subtitle>Camp Clark, Oregon Coast</Subtitle>
