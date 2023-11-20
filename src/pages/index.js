@@ -34,7 +34,7 @@ const ComingSoonMessage = styled.p`
 `;
 
 const StyledImage = styled.img`
-  width: 15%;
+  width: 22em;
 `;
 
 const LandingPage = () => {
