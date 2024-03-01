@@ -49,6 +49,9 @@ const FixedNavBar = () => {
       allPrismicHomepage {
         nodes {
           data {
+            details_body {
+              html
+            }
             details_header {
               text
             }
