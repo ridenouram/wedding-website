@@ -8,6 +8,32 @@
         "placeholder": "Website Title"
       }
     },
+    "basic_info_body": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "allowTargetBlank": true,
+        "label": "basic info body",
+        "placeholder": "Basic information"
+      }
+    },
+    "schedule_header": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "Schedule header",
+        "placeholder": "Header for schedule section"
+      }
+    },
+    "schedule_body": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "allowTargetBlank": true,
+        "label": "schedule body",
+        "placeholder": "Body of schedule section"
+      }
+    },
     "details_header": {
       "type": "StructuredText",
       "config": {

@@ -6,6 +6,7 @@ import appleTreePhoto from "../assets/images/apple-tree.png";
 import FixedNavBar from "./navigation";
 import { createGlobalStyle } from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
+import Form from "../components/Form";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -45,10 +46,21 @@ const SecondarySubtitle = styled.p`
   font-style: italic;
 `;
 
+const SectionTitle = styled.p`
+  font-size: 25px;
+  color: #333;
+  border: 2px solid rgba(85, 85, 91, 0.5);
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 0;
+  }
+`;
+
 const Paragraph = styled.p`
   font-size: 18px;
-  width: 60%;
+  width: 80%;
   text-align: center;
+  max-width: 100%;
 `;
 
 const StyledAppleTreePhoto = styled.img`
@@ -64,7 +76,7 @@ const ScrollContainer = styled.div`
   width: 100%;
 `;
 
-const FormContainer = styled.div`
+const ParagraphContainer = styled.div`
   background-color: rgba(244, 241, 232, 0.8);
   display: flex;
   flex-direction: column;
@@ -72,7 +84,18 @@ const FormContainer = styled.div`
   justify-content: center;
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  max-width: 100%;
+  padding: 10% 0%;
+  margin-bottom: 10%;
+  ul {
+    text-align: center;
+    list-style-position: inside;
+  }
+  h4 {
+    text-style: bold;
+    margin-top: 60px;
+    font-size: 21px;
+  }
 `;
 
 const EmptySpace = styled.div`
@@ -110,21 +133,41 @@ const LandingPage = () => {
             site_title {
               text
             }
+            schedule_body {
+              html
+            }
+            schedule_header {
+              text
+            }
+            basic_info_body {
+              html
+            }
           }
         }
       }
     }
   `);
 
-  const { details_body, details_header, site_title } =
-    data.allPrismicHomepage.nodes[0].data;
+  if (typeof window !== "undefined") {
+    // eslint-disable-next-line global-require
+    require("smooth-scroll")('a[href*="#"]');
+  }
+
+  const {
+    details_body,
+    details_header,
+    site_title,
+    basic_info_body,
+    schedule_header,
+    schedule_body,
+  } = data.allPrismicHomepage.nodes[0].data;
 
   return (
     <>
       <GlobalStyle />
       <LandingPageContainer>
         <FixedNavBar />
-        <ScrollContainer>
+        <ScrollContainer id="top">
           <StyledAppleTreePhoto
             src={appleTreePhoto}
             alt="Anna and Sam standing in front of an apple tree"
@@ -137,11 +180,26 @@ const LandingPage = () => {
               <SecondarySubtitle>Cloverdale, OR 97112</SecondarySubtitle>
             </DetailsBox>
           </EmptySpace>
-          <FormContainer>
+          <ParagraphContainer>
+            <Paragraph
+              dangerouslySetInnerHTML={{ __html: basic_info_body.html }}
+            />
+          </ParagraphContainer>
+          <ParagraphContainer id="schedule">
+            <SectionTitle>{schedule_header.text}</SectionTitle>
+            <Paragraph
+              dangerouslySetInnerHTML={{ __html: schedule_body.html }}
+            />
+          </ParagraphContainer>
+          <ParagraphContainer id="details">
+            <SectionTitle>{details_header.text}</SectionTitle>
             <Paragraph
               dangerouslySetInnerHTML={{ __html: details_body.html }}
             />
-          </FormContainer>
+          </ParagraphContainer>
+          <ParagraphContainer>
+            <Form />
+          </ParagraphContainer>
         </ScrollContainer>
       </LandingPageContainer>
     </>
