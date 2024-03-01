@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import "../assets/fonts/fonts.css";
-import Form from "../components/Form";
-import dogsSketch from "../assets/images/dogs-sketch.png";
 import venuePhoto from "../assets/images/camp-clark.jpeg";
 import appleTreePhoto from "../assets/images/apple-tree.png";
 import FixedNavBar from "./navigation";
 import { createGlobalStyle } from "styled-components";
+import { useStaticQuery, graphql } from "gatsby";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -97,6 +96,29 @@ const DetailsBox = styled.div`
 `;
 
 const LandingPage = () => {
+  const data = useStaticQuery(graphql`
+    query LandingPageQuery {
+      allPrismicHomepage {
+        nodes {
+          data {
+            details_body {
+              html
+            }
+            details_header {
+              text
+            }
+            site_title {
+              text
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const { details_body, details_header, site_title } =
+    data.allPrismicHomepage.nodes[0].data;
+
   return (
     <>
       <GlobalStyle />
@@ -116,22 +138,9 @@ const LandingPage = () => {
             </DetailsBox>
           </EmptySpace>
           <FormContainer>
-            <Paragraph>
-              {
-                "Sam and Anna’s wedding will take place the weekend of June 28th - 30th at Camp Clark on the Oregon Coast. Camp Clark is two hours from Portland, 40 minutes from Pacific City, and a few miles away from the stunning Cape Lookout trail. "
-              }
-            </Paragraph>
-            <Paragraph>
-              {
-                "We’ll be renting the entire camp, which includes Adirondack cabins, basic facilities, and over two miles of beautiful Oregon beaches. All guests are encouraged to camp with us for the entire weekend- there’s more than enough room for everyone!"
-              }
-            </Paragraph>
-            <Paragraph>
-              {
-                "For more information about the facilities and what to bring, please read the FAQ below. We have also included lodging advice and recommendations for anyone who prefers to stay off site. "
-              }
-            </Paragraph>
-            {/* <Form /> */}
+            <Paragraph
+              dangerouslySetInnerHTML={{ __html: details_body.html }}
+            />
           </FormContainer>
         </ScrollContainer>
       </LandingPageContainer>

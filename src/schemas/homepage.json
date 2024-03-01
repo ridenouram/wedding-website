@@ -1,0 +1,29 @@
+{
+  "Main": {
+    "site_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "site title",
+        "placeholder": "Website Title"
+      }
+    },
+    "details_header": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "details header",
+        "placeholder": "header for details section"
+      }
+    },
+    "details_body": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "allowTargetBlank": true,
+        "label": "details body",
+        "placeholder": "body of the details section"
+      }
+    }
+  }
+}

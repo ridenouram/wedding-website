@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import dogsSketch from "../assets/images/dogs-sketch.png";
+import { useStaticQuery, graphql } from "gatsby";
 
 const NavBar = styled.nav`
   position: sticky;
@@ -43,16 +44,35 @@ const MenuItems = styled.div`
 `;
 
 const FixedNavBar = () => {
+  const data = useStaticQuery(graphql`
+    query LandingPageQuery {
+      allPrismicHomepage {
+        nodes {
+          data {
+            details_header {
+              text
+            }
+            site_title {
+              text
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const { details_header, site_title } = data.allPrismicHomepage.nodes[0].data;
+
   return (
     <NavBar>
       <Menu>
         <MenuItems>
           <Logo src={dogsSketch} alt="Logo" />
-          <NavLink href="#">Anna & Sam</NavLink>
+          <NavLink href="#">{site_title.text}</NavLink>
         </MenuItems>
         <MenuItems>
           <MenuItem>
-            <NavLink href="#">Details</NavLink>
+            <NavLink href="#">{details_header.text}</NavLink>
           </MenuItem>
           <MenuItem>
             <NavLink href="#">Schedule</NavLink>
