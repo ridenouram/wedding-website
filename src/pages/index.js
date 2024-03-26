@@ -6,7 +6,7 @@ import appleTreePhoto from "../assets/images/apple-tree.png";
 import FixedNavBar from "./navigation";
 import { createGlobalStyle } from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
-import Form from "../components/Form";
+import EmailForm from "../components/EmailForm";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -198,7 +198,7 @@ const LandingPage = () => {
             />
           </ParagraphContainer>
           <ParagraphContainer>
-            <Form />
+            <EmailForm />
           </ParagraphContainer>
         </ScrollContainer>
       </LandingPageContainer>
