@@ -7,6 +7,7 @@ import FixedNavBar from "./navigation";
 import { createGlobalStyle } from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import EmailForm from "../components/EmailForm";
+import RSVP from "../components/RSVP";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -197,8 +198,8 @@ const LandingPage = () => {
               dangerouslySetInnerHTML={{ __html: details_body.html }}
             />
           </ParagraphContainer>
-          <ParagraphContainer>
-            <EmailForm />
+          <ParagraphContainer id="RSVP">
+            <RSVP />
           </ParagraphContainer>
         </ScrollContainer>
       </LandingPageContainer>

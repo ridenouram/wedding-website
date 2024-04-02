@@ -125,6 +125,9 @@ const FixedNavBar = () => {
           <MenuItem>
             <NavLink to="/#details">Details</NavLink>
           </MenuItem>
+          <MenuItem>
+            <NavLink to="/#RSVP">RSVP</NavLink>
+          </MenuItem>
         </MenuItems>
       </Menu>
     </NavBar>
