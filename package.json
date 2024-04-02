@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@feathery/react": "^2.0.430",
+    "@netlify/functions": "^2.6.0",
     "babel-plugin-styled-components": "^2.1.4",
     "gatsby": "^5.12.4",
     "gatsby-plugin-styled-components": "^6.12.0",

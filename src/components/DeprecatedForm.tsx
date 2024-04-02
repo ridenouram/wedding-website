@@ -32,7 +32,7 @@ const Form = () => {
   const formRef = useRef(null);
 
   const scriptUrl = process.env.GATSBY_SHEETS_URL;
-  console.log("AMR scriptUrl", scriptUrl);
+
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 

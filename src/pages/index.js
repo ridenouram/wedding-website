@@ -164,11 +164,6 @@ const LandingPage = () => {
     schedule_body,
   } = data.allPrismicHomepage.nodes[0].data;
 
-  const hello = process.env.HELLO;
-  const feathery = process.env.FEATHERY;
-
-  console.log("AMR hello", { hello, feathery });
-
   return (
     <>
       <GlobalStyle />
