@@ -32,6 +32,7 @@ const Form = () => {
   const formRef = useRef(null);
 
   const scriptUrl = process.env.GATSBY_SHEETS_URL;
+  console.log("AMR scriptUrl", scriptUrl);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -56,7 +57,7 @@ const Form = () => {
 
   return (
     <>
-      <StyledForm
+      {/* <StyledForm
         method="post"
         ref={formRef}
         onSubmit={handleSubmit}
@@ -75,7 +76,7 @@ const Form = () => {
             ? "Thank you!"
             : "Stay Up To Date"}
         </SubmitButton>
-      </StyledForm>
+      </StyledForm> */}
     </>
   );
 };

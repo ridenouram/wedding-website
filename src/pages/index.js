@@ -8,6 +8,7 @@ import { createGlobalStyle } from "styled-components";
 import { useStaticQuery, graphql } from "gatsby";
 import EmailForm from "../components/EmailForm";
 import RSVP from "../components/RSVP";
+import DeprecatedForm from "../components/DeprecatedForm";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -200,6 +201,7 @@ const LandingPage = () => {
           </ParagraphContainer>
           <ParagraphContainer id="RSVP">
             <RSVP />
+            <DeprecatedForm />
           </ParagraphContainer>
         </ScrollContainer>
       </LandingPageContainer>
